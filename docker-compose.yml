@@ -5,10 +5,12 @@ services:
       dockerfile: Dockerfile
     container_name: douala-drive-api
     ports:
-      - "${PORT}:${PORT}"
+      - "5020:5020"
     environment:
       NODE_ENV: production
     volumes:
-      - .:/usr/src/app
+      - .:/usr/src/app:cached
+      - /usr/src/app/node_modules
+      - /usr/src/app/dist # Exclure ce dossier
     command: ["npm", "start"]
     restart: always
