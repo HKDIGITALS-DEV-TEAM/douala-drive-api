@@ -14,3 +14,8 @@ services:
       - /usr/src/app/dist # Exclure ce dossier
     command: ["npm", "start"]
     restart: always
+    networks:
+      - db-network
+
+networks:
+  db-network:
