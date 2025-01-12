@@ -1,5 +1,5 @@
 services:
-  api:
+  douala-drive-api:
     build:
       context: .
       dockerfile: Dockerfile
@@ -8,14 +8,20 @@ services:
       - "5020:5020"
     environment:
       NODE_ENV: production
+      DB_HOST: postgres  # Référence le service PostgreSQL
+      DB_PORT: 5432
+      # DB_NAME: mydb
+      DB_ADMIN_USERNAME: hkdigitals
+      DB_ADMIN_PASSWORD: hkdigitals
     volumes:
       - .:/usr/src/app:cached
       - /usr/src/app/node_modules
       - /usr/src/app/dist # Exclure ce dossier
+    networks:
+      - shared-network
     command: ["npm", "start"]
     restart: always
-    networks:
-      - db-network
 
 networks:
-  db-network:
+  shared-network:
+    external: true  # Utiliser le réseau partagé existant
