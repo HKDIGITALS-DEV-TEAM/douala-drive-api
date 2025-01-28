@@ -26,6 +26,7 @@ export const validateVehicleRequest = (
   res: Response,
   next: NextFunction
 ): void => {
+  console.log(req.body);
   const { error } = vehicleRequestSchema.validate(req.body, {
     abortEarly: false,
   });
