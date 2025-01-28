@@ -23,8 +23,11 @@ export const vehicleRequestSchema = Joi.object({
     "string.base": "La couleur doit être une chaîne de caractères.",
     "string.empty": "La couleur est obligatoire.",
   }),
-  image: Joi.string().uri().optional().messages({
+  image: Joi.string().uri().optional().allow(null).messages({
     "string.uri": "L'image doit être un lien valide.",
+  }),
+  video: Joi.string().uri().optional().allow(null).messages({
+    "string.uri": "La vidéo doit être un lien valide.",
   }),
   price: Joi.number().positive().required().messages({
     "number.base": "Le prix doit être un nombre.",
