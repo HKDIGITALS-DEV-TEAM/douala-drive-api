@@ -31,6 +31,7 @@ export const toVehicleDTO = (vehicle: Vehicle): VehicleDTO => {
       : { id: vehicle.category_id, name: "Inconnu" }, // Fallback si la catégorie n'est pas chargée
     color: vehicle.color,
     image: vehicle.image,
+    video: vehicle.video,
     price: vehicle.price,
     status: status
       ? {
