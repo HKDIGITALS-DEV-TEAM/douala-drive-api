@@ -44,7 +44,7 @@ router.post(
   async (req: Request, res: Response): Promise<void> => {
     try {
       const vehicleData = req.body;
-      logger.info("Requête pour créer ou mettre à jour un véhicule.");
+      logger.info("Requête pour créer ou mettre à jour un véhicule :", vehicleData);
       const vehicle = await vehicleService.createOrUpdateVehicle(vehicleData);
       logger.info("Véhicule créé ou mis à jour avec succès.");
       res.status(201).json(vehicle);
