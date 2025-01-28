@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { vehicleRequestSchema } from "./vehicleRequestSchema";
+import { logger } from "@domain/utils/logger";
 
 /**
  * Format attendu pour la création ou la modification d'un véhicule.
@@ -26,7 +27,7 @@ export const validateVehicleRequest = (
   res: Response,
   next: NextFunction
 ): void => {
-  console.log(req.body);
+  logger.info(req.body);
   const { error } = vehicleRequestSchema.validate(req.body, {
     abortEarly: false,
   });
