@@ -12,7 +12,6 @@ export type VehicleRequest = {
   category_id: string;
   color: string;
   image?: string; // Peut être un lien ou un chemin local
-  video?: string;
   price: number;
   status_id: string;
   features?: string; // Optionnel

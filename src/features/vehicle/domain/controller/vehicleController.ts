@@ -108,7 +108,7 @@ router.delete("/:id", async (req: Request, res: Response): Promise<void> => {
  * /vehicles/upload:
  *   post:
  *     summary: Upload d'image pour un véhicule
- *     description: Permet d'uploader une image ou une vidéo pour un véhicule.
+ *     description: Permet d'uploader une image pour un véhicule.
  *     tags:
  *       - Véhicules
  *     requestBody:
@@ -138,25 +138,12 @@ router.post(
         throw new Error("Aucun fichier uploadé.");
       }
 
-      // Détermine le type de fichier (image ou vidéo)
-      const mimeType = req.file.mimetype;
-      const isImage = mimeType.startsWith("image/");
-      const isVideo = mimeType.startsWith("video/");
-
-      if (!isImage && !isVideo) {
-        throw new Error("Seuls les fichiers images et vidéos sont autorisés.");
-      }
-
       const host = `${process.env.API_HOSTNAME}/${process.env.API_PREFIX}`;
-      const fileUrl = `${host}/${isImage ? "images" : "videos"}/${
-        req.file.filename
-      }`;
-
-      logger.info(`Fichier uploadé avec succès : ${req.file.filename}`);
+      const imageUrl = `${host}/images/${req.file.filename}`;
+      logger.info(`Image uploadée avec succès : ${req.file.filename}`);
       res.status(200).json({
-        message: "Fichier uploadé avec succès.",
-        filename: fileUrl,
-        type: isImage ? "image" : "video",
+        message: "Image uploadée avec succès.",
+        filename: imageUrl,
       });
     } catch (error) {
       logger.error("Erreur lors de l'upload de l'image :", error);

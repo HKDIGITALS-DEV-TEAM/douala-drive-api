@@ -13,7 +13,6 @@ export class Vehicle extends Model {
   public category_id!: string;
   public color!: string;
   public image!: string | null;
-  public video!: string | null;
   public price!: number;
   public status_id!: string;
   public features!: string | null;
@@ -65,10 +64,6 @@ Vehicle.init(
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    video: {
-      type: DataTypes.STRING,
       allowNull: true,
     },
   },

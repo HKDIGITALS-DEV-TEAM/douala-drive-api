@@ -11,7 +11,6 @@ export type VehicleDTO = {
   };
   color: string;
   image: string | null;
-  video: string | null;
   price: number;
   status: {
     id: string;
