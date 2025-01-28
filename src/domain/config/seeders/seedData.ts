@@ -16,7 +16,7 @@ export async function seedData() {
       defaults: {
         id: uuidv4(),
         address: "Douala, Cameroun",
-        phone: "+237 00 00 00 00",
+        phone: "+237 6 70 45 90 29 / +237 6 56 95 01 71",
         email: "contact@doualadrive.com",
       },
     });

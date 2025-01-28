@@ -23,11 +23,18 @@ export const upload = multer({
     },
   }),
   fileFilter: (req, file, cb) => {
-    const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+    const allowedTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/gif",
+      "video/mp4",
+      "video/avi",
+      "video/mkv",
+    ];
     if (allowedTypes.includes(file.mimetype)) {
       cb(null, true);
     } else {
-      cb(new Error("Seuls les fichiers JPEG, PNG, et GIF sont autorisés."));
+      cb(new Error("Seuls les fichiers JPEG, PNG, et GIF et certains formats vidéos sont autorisés."));
     }
   },
   limits: {
